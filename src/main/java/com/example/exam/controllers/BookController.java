@@ -1,45 +1,52 @@
 package com.example.exam.controllers;
 
-import com.example.exam.schemas.Book;
-import com.example.exam.services.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 class CreateBookBody {
-    private String name;
-    private String personName;
-    private Integer roomId;
+    // TODO: Add author
+    public String title;
+    public String language;
+    public String publishedAt;
+    public String isbn;
 
-    public CreateBookBody() {}
-
-    public String getDate() {
-        return this.date;
+    public CreateBookBody() {
     }
 
-    public Integer getRoomId() {
-        return this.roomId;
+    public String getTitle() {
+        return this.title;
     }
 
-    public String getPersonName() {
-        return this.personName;
+    public String getLanguage() {
+        return this.language;
+    }
+
+    public String getPublishedAt() {
+        return this.publishedAt;
+    }
+
+    public String getIsbn() {
+        return this.isbn;
     }
 }
 
 @RestController
-@RequestMapping("/api/reservations")
+@RequestMapping("/api/books")
 public class BookController {
 
-    private final ReservationService reservationService;
+    private final BookService bookService;
 
-    public ReservationController(ReservationService reservationService) {
-        this.reservationService = reservationService;
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
     }
+
     @PostMapping("")
-    public ResponseEntity<String> createReservation(@RequestBody CreateReservationBody reservation) {
+    public ResponseEntity<String> createBook(@RequestBody CreateBookBody book) {
         try {
-            reservationService.create(reservation.getDate(), reservation.getPersonName(), reservation.getRoomId());
+            bookService.create(reservation.getDate(), reservation.getReservedBy(), reservation.getRoomId());
 
             return ResponseEntity.ok("A new reservation was created!");
         } catch (Exception e) {

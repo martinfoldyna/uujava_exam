@@ -1,21 +1,16 @@
 package com.example.exam.controllers;
 
-import com.example.exam.schemas.Book;
 import com.example.exam.services.ReservationService;
-import org.springframework.cglib.core.Local;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 class CreateReservationBody {
     private String reservationStart;
     private String reservationEnd;
-    private String personName;
     private Integer bookId;
+    private String reservedBy;
 
     public CreateReservationBody() {
     }
@@ -32,9 +27,13 @@ class CreateReservationBody {
         return this.bookId;
     }
 
-    public String getPersonName() {
-        return this.personName;
+    public String getReservedBy() {
+        return this.reservedBy;
     }
+}
+
+class UpdateReservationBody extends CreateReservationBody{
+
 }
 
 @RestController
@@ -50,7 +49,19 @@ public class ReservationController {
     @PostMapping("")
     public ResponseEntity<String> createReservation(@RequestBody CreateReservationBody reservation) {
         try {
-            reservationService.create(reservation.getDate(), reservation.getPersonName(), reservation.getRoomId());
+            reservationService.create(reservation.getReservationStart(), reservation.getReservationEnd(), reservation.getBookId(), reservation.getReservedBy());
+
+            return ResponseEntity.ok("A new reservation was created!");
+        } catch (Exception e) {
+            System.out.println(e);
+
+            return (ResponseEntity<String>) ResponseEntity.badRequest();
+        }
+    }
+    @PutMapping("")
+    public ResponseEntity<String> createReservation(@RequestBody CreateReservationBody reservation) {
+        try {
+            reservationService.update(reservation.getReservationStart(), reservation.getReservationEnd(), reservation.getBookId(), reservation.getReservedBy());
 
             return ResponseEntity.ok("A new reservation was created!");
         } catch (Exception e) {

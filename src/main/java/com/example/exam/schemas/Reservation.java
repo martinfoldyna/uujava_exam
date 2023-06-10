@@ -1,21 +1,21 @@
 package com.example.exam.schemas;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
-public class Book {
+public class Reservation {
     public UUID id;
+    private String reservationStart;
+    private String reservationEnd;
+    private Integer bookId;
+    private String reservedBy;
 
-    // TODO: Add author
-    public String title;
-    public String language;
-    public LocalDateTime publishedAt;
-    public String isbn;
 
-    public Book(String title, String countryOrigin, String language, LocalDateTime publishedAt, String isbn) {
+    public ReservationController(String title, String countryOrigin, String language, LocalDate publishedAt, String isbn) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.language = language;
+        this.countryOrigin = countryOrigin;
         this.publishedAt = publishedAt;
         this.isbn = isbn;
     }
@@ -24,12 +24,16 @@ public class Book {
         return this.id;
     }
 
-    public LocalDateTime getPublishedAt() {
+    public LocalDate getPublishedAt() {
         return this.publishedAt;
     }
 
     public String getLanguage() {
         return this.language;
+    }
+
+    public String getCountryOrigin() {
+        return this.countryOrigin;
     }
 
     public String getIsbn() {

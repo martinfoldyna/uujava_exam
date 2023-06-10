@@ -11,7 +11,7 @@ public class Reservation {
     private String reservedBy;
 
 
-    public ReservationController(String title, String countryOrigin, String language, LocalDate publishedAt, String isbn) {
+    public void ReservationController(String title, String countryOrigin, String language, LocalDate publishedAt, String isbn) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.language = language;

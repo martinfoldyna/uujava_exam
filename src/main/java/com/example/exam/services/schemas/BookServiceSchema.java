@@ -1,7 +1,6 @@
 package com.example.exam.services.schemas;
 
 import com.example.exam.schemas.Book;
-import com.example.spring_demo.schemas.Reservation;
 import jakarta.annotation.PostConstruct;
 
 import java.util.ArrayList;

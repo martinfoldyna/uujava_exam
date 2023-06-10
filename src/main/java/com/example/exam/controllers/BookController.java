@@ -2,6 +2,7 @@ package com.example.exam.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.example.exam.services.BookService;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class BookController {
     }
 
     @GetMapping("")
-    public ResponseEntity<ArrayList<Reservation>> getAllReservations() {
-        return ResponseEntity.ok(reservationService.findAll());
+    public ResponseEntity<ArrayList<Book>> getAllBooks() {
+        return ResponseEntity.ok(bookService.findAll());
     }
 }

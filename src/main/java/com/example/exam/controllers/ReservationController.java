@@ -5,26 +5,31 @@ import com.example.exam.services.ReservationService;
 import org.springframework.cglib.core.Local;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.time.LocalDateTime;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 class CreateReservationBody {
-    private String createdAt;
     private String reservationStart;
     private String reservationEnd;
     private String personName;
     private Integer bookId;
 
-    public CreateReservationBody() {}
-    private String getDateOfCreation {return LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);}
-    public String getDate() {
-        return this.date;
+    public CreateReservationBody() {
     }
 
-    public Integer getRoomId() {
-        return this.roomId;
+    public String getReservationStart() {
+        return this.reservationStart;
+    }
+
+    public String getReservationEnd() {
+        return this.reservationEnd;
+    }
+
+    public Integer getBookId() {
+        return this.bookId;
     }
 
     public String getPersonName() {
@@ -41,6 +46,7 @@ public class ReservationController {
     public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
+
     @PostMapping("")
     public ResponseEntity<String> createReservation(@RequestBody CreateReservationBody reservation) {
         try {

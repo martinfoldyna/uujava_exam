@@ -1,7 +1,6 @@
 package com.example.exam.services;
 
 import com.example.exam.services.schemas.AuthorServiceSchema;
-import com.example.exam.services.schemas.BookServiceSchema;
 import com.example.spring_demo.schemas.Reservation;
 import com.example.spring_demo.services.schemas.ReservationServiceSchema;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ import java.util.UUID;
 public class AuthorService implements AuthorServiceSchema {
     private HashMap<UUID, Reservation> reservations;
 
-    public BookService() {
+    public void BookService() {
         this.reservations = new HashMap<>();
     }
 

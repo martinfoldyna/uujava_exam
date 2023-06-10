@@ -1,24 +1,19 @@
 package com.example.exam.controllers;
 
 import com.example.exam.schemas.Book;
-import com.example.exam.services.ReservationService;
-import org.springframework.cglib.core.Local;
+import com.example.exam.services.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.time.LocalDateTime;
 
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-class CreateReservationBody {
-    private String createdAt;
-    private String reservationStart;
-    private String reservationEnd;
+class CreateBookBody {
+    private String name;
     private String personName;
-    private Integer bookId;
+    private Integer roomId;
 
-    public CreateReservationBody() {}
-    private String getDateOfCreation {return LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);}
+    public CreateBookBody() {}
+
     public String getDate() {
         return this.date;
     }
@@ -34,7 +29,7 @@ class CreateReservationBody {
 
 @RestController
 @RequestMapping("/api/reservations")
-public class ReservationController {
+public class BookController {
 
     private final ReservationService reservationService;
 

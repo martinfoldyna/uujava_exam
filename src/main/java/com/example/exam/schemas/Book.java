@@ -7,7 +7,7 @@ public class Book {
     public UUID id;
 
     // TODO: Add author
-    public String name;
+    public String title;
     public String language;
     public LocalDate publishedAt;
     public String countryOrigin;
@@ -15,7 +15,7 @@ public class Book {
 
     public Book(String name, String countryOrigin, String language, LocalDate publishedAt, String isbn) {
         this.id = UUID.randomUUID();
-        this.name = name;
+        this.title = name;
         this.language = language;
         this.countryOrigin = countryOrigin;
         this.publishedAt = publishedAt;
@@ -42,7 +42,7 @@ public class Book {
         return this.isbn;
     }
 
-    public String getName() {
-        return this.name;
+    public String getTitle() {
+        return this.title;
     }
 }

@@ -6,14 +6,15 @@ import java.util.UUID;
 public class Book {
     public UUID id;
 
-    // TODO: Add author
+    public UUID authorId;
     public String title;
     public String language;
     public LocalDateTime publishedAt;
     public String isbn;
 
-    public Book(String title, String countryOrigin, String language, LocalDateTime publishedAt, String isbn) {
+    public Book(UUID authorId, String title, String countryOrigin, String language, LocalDateTime publishedAt, String isbn) {
         this.id = UUID.randomUUID();
+        this.authorId = authorId;
         this.title = title;
         this.language = language;
         this.publishedAt = publishedAt;
@@ -22,6 +23,10 @@ public class Book {
 
     public UUID getId() {
         return this.id;
+    }
+
+    public UUID getAuthorId() {
+        return this.authorId;
     }
 
     public LocalDateTime getPublishedAt() {

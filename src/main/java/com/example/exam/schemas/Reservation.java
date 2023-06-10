@@ -1,46 +1,43 @@
 package com.example.exam.schemas;
 
-import java.time.LocalDate;
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Reservation {
     public UUID id;
-    private String reservationStart;
-    private String reservationEnd;
-    private Integer bookId;
+    private LocalDateTime reservationStart;
+    private LocalDateTime reservationEnd;
+    private UUID bookId;
     private String reservedBy;
 
 
-    public ReservationController(String title, String countryOrigin, String language, LocalDate publishedAt, String isbn) {
+    public Reservation(LocalDateTime reservationStart, LocalDateTime reservationEnd, UUID bookId, String reservedBy) {
         this.id = UUID.randomUUID();
-        this.title = title;
-        this.language = language;
-        this.countryOrigin = countryOrigin;
-        this.publishedAt = publishedAt;
-        this.isbn = isbn;
+        this.reservationStart = reservationStart;
+        this.reservationEnd = reservationEnd;
+        this.bookId = bookId;
+        this.reservedBy = reservedBy;
     }
 
     public UUID getId() {
         return this.id;
     }
 
-    public LocalDate getPublishedAt() {
-        return this.publishedAt;
+    public LocalDateTime getReservationStart() {
+        return this.reservationStart;
     }
 
-    public String getLanguage() {
-        return this.language;
+    public LocalDateTime getReservationEnd() {
+        return this.reservationEnd;
     }
 
-    public String getCountryOrigin() {
-        return this.countryOrigin;
+    public UUID getBookId() {
+        return this.bookId;
     }
 
-    public String getIsbn() {
-        return this.isbn;
-    }
-
-    public String getTitle() {
-        return this.title;
+    public String getReservedBy() {
+        return this.reservedBy;
     }
 }

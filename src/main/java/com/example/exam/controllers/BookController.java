@@ -1,5 +1,6 @@
 package com.example.exam.controllers;
 
+import com.example.exam.schemas.Book;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,7 +8,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 class CreateBookBody {
-    // TODO: Add author
+
+    public String authorId;
     public String title;
     public String language;
     public String publishedAt;
@@ -15,6 +17,7 @@ class CreateBookBody {
 
     public CreateBookBody() {
     }
+    public String getAuthorId() { return this.authorId; }
 
     public String getTitle() {
         return this.title;
@@ -33,6 +36,10 @@ class CreateBookBody {
     }
 }
 
+class UpdateBookBody {
+
+}
+
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
@@ -46,9 +53,9 @@ public class BookController {
     @PostMapping("")
     public ResponseEntity<String> createBook(@RequestBody CreateBookBody book) {
         try {
-            bookService.create(reservation.getDate(), reservation.getReservedBy(), reservation.getRoomId());
+            bookService.create(book.getTitle(), book.getLanguage(), book.getPublishedAt(), book.getIsbn());
 
-            return ResponseEntity.ok("A new reservation was created!");
+            return ResponseEntity.ok("A new book was created!");
         } catch (Exception e) {
             System.out.println(e);
 
@@ -57,7 +64,7 @@ public class BookController {
     }
 
     @GetMapping("")
-    public ResponseEntity<ArrayList<Reservation>> getAllReservations() {
-        return ResponseEntity.ok(reservationService.findAll());
+    public ResponseEntity<ArrayList<Book>> getAllBooks() {
+        return ResponseEntity.ok(bookService.findAll());
     }
 }
